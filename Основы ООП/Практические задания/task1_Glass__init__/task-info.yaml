@@ -6,8 +6,8 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 136
-    length: 0
+  - offset: 229
+    length: 162
     placeholder_text: '#  TODO инициализировать объект "Стакан"'
     initial_state:
       length: 40
@@ -27,26 +27,26 @@ files:
               if occupied_volume < 0:
                   raise ValueError
               self.occupied_volume = occupied_volume  # объем жидкости в стакане
-  - offset: 170
-    length: 51
+  - offset: 425
+    length: 54
     placeholder_text: '...  # TODO инициализировать два объекта типа Glass'
     initial_state:
       length: 51
       offset: 218
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: |-
       glass1 = Glass(200, 100)  # экземпляр класса
           glass2 = Glass(500, 50)  # экземпляр класса
-  - offset: 227
-    length: 57
+  - offset: 524
+    length: 45
     placeholder_text: '# TODO попробовать инициализировать не корректные объекты'
     initial_state:
       length: 57
       offset: 275
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: |-
       incorrect_capacity_volume_type = ...
@@ -66,5 +66,7 @@ files:
         # TODO попробовать инициализировать не корректные объекты
   learner_created: false
 status: Solved
+feedback:
+  time: Wed, 22 Dec 2021 15:30:19 UTC
 record: -1
 post_submission_on_open: true

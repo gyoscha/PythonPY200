@@ -10,7 +10,7 @@ class Glass:
         return f"Glass({self.capacity_volume}, {self.occupied_volume})"
 
     def __str__(self) -> str:
-        ...  # TODO метод должен возвращать строку, которая содержит человеко-читаемую информацию
+        return f'Стакан объёмом {self.capacity_volume}. Объём жидкости = {self.occupied_volume}'
 
 
 if __name__ == "__main__":
@@ -18,3 +18,4 @@ if __name__ == "__main__":
 
     print(glass)  # Стакан объёмом 200. Объём жидкости = 100
     print([Glass(i, i) for i in range(50, 251, 50)])  # [Glass(50, 50), Glass(100, 100), Glass(150, 150), Glass(200, 200), Glass(250, 250)]
+    # В списке всегда вызывается repr.
