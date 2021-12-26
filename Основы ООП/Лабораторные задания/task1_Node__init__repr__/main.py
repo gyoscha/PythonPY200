@@ -13,7 +13,7 @@ class Node:
         self.value = value
         self.next = next_
 
-    def __repr__(self) -> str:
+    def __repr__(self):
         return f'Node({self.value}, {self.next})'
 
 

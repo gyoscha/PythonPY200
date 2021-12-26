@@ -9,8 +9,8 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 180
-    length: 42
+  - offset: 144
+    length: 240
     placeholder_text: |-
       #  TODO заменить на метод
               if not isinstance(capacity_volume, (int, float)):
@@ -22,13 +22,13 @@ files:
       length: 240
       offset: 144
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       self.capacity_volume = None
               self.init_capacity_volume(capacity_volume)
-  - offset: 447
-    length: 277
+  - offset: 609
+    length: 77
     placeholder_text: '#  TODO создать метод, который будет инициализировать атрибут
       capacity_volume'
     initial_state:
@@ -44,8 +44,8 @@ files:
               if not capacity_volume > 0:
                   raise ValueError
               self.capacity_volume = capacity_volume  # объем стакана
-  - offset: 758
-    length: 24
+  - offset: 720
+    length: 51
     placeholder_text: '...  # TODO инициализировать экземпляр класса Glass'
     initial_state:
       length: 51
@@ -54,8 +54,8 @@ files:
     selected: true
     status: Solved
     encrypted_possible_answer: 'glass = Glass(200, 100)  # экземпляр класса'
-  - offset: 793
-    length: 67
+  - offset: 782
+    length: 48
     placeholder_text: '...)  # TODO распечатать атрибут capacity_volume'
     initial_state:
       length: 48
@@ -64,8 +64,8 @@ files:
     selected: false
     status: Solved
     encrypted_possible_answer: glass.capacity_volume)
-  - offset: 871
-    length: 67
+  - offset: 841
+    length: 48
     placeholder_text: '...)  # TODO распечатать атрибут occupied_volume'
     initial_state:
       length: 48
@@ -107,5 +107,5 @@ files:
 status: Solved
 feedback:
   message: Congratulations!
-  time: Wed, 22 Dec 2021 15:51:28 UTC
+  time: Sun, 26 Dec 2021 12:20:07 UTC
 record: -1

@@ -4,13 +4,13 @@ files:
   visible: true
   placeholders:
   - offset: 0
-    length: 142
+    length: 44
     placeholder_text: '# TODO написать класс Glass согласно условию'
     initial_state:
       length: 44
       offset: 0
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       class Glass:
@@ -53,5 +53,5 @@ files:
 status: Solved
 feedback:
   message: Congratulations!
-  time: Wed, 22 Dec 2021 17:51:51 UTC
+  time: Sun, 26 Dec 2021 12:19:13 UTC
 record: -1
