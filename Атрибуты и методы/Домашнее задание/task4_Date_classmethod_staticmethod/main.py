@@ -14,19 +14,45 @@ class Date:
 
         self.is_valid_date(self.day, self.month, self.year)
 
-    def is_leap_year(self, year: int):
+    @staticmethod
+    def is_leap_year(year: int):
         """Проверяет, является ли год високосным"""
-        ...  # TODO
+        if not isinstance(year, int):
+            raise TypeError('Неправильно введен год!')
 
-    def get_max_day(self, month: int, year: int):
+        if year % 4 == 0:
+            print('Год високосный')
+            return True
+        else:
+            print('Обычный год')
+            return False
+
+    @classmethod
+    def get_max_day(cls, month: int, year: int):
         """Возвращает максимальное количество дней в месяце для указанного года"""
-        ...  # TODO
+        if not isinstance(month, int):
+            raise TypeError('Неправильно введен месяц!')
+        if not 1 <= month <= 12:
+            raise ValueError('Такого месяца не существует!')
 
-    def is_valid_date(self, day: int, month: int, year: int):
+        if cls.is_leap_year(year) is True:
+            return cls.DAY_OF_MONTH[1][month - 1]
+        else:
+            return cls.DAY_OF_MONTH[0][month - 1]
+
+    @classmethod
+    def is_valid_date(cls, day: int, month: int, year: int):
         """Проверяет, является ли дата корректной"""
-        ...  # TODO
+
+        if not isinstance(day, int):
+            raise TypeError('Неправильно введен день!')
+        if not 1 <= day <= cls.get_max_day(month, year):
+            raise ValueError('Такого дня в этом месяце нет!')
+
+    def __str__(self):
+        return f'{self.day:0>2}/{self.month:0>2}/{self.year}'
 
 
 if __name__ == "__main__":
-    # Write your solution here
-    pass
+    date_1 = Date(11, 2, 1990)
+    print(date_1)
