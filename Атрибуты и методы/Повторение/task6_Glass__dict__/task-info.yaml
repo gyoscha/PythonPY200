@@ -19,7 +19,7 @@ files:
       offset: 144
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       print(self.__dict__)
               self.capacity_volume = capacity_volume  # объем стакана
@@ -41,5 +41,8 @@ files:
 - name: __init__.py
   visible: false
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Tue, 04 Jan 2022 09:44:25 UTC
 record: -1

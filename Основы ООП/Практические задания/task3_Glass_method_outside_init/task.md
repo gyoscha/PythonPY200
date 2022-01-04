@@ -7,9 +7,9 @@
    
    
    class Glass:
-       def __init__(self, capacity_volume: Union[int, float], occupied_volume: Union[int, float]):
-           self.capacity_volume = None
-           self.init_capacity_volume(capacity_volume)
+       def __init__(cls, capacity_volume: Union[int, float], occupied_volume: Union[int, float]):
+           cls.capacity_volume = None
+           cls.init_capacity_volume(capacity_volume)
    
            ...
    ```

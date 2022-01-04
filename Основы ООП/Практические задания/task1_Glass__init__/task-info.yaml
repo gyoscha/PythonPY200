@@ -46,7 +46,7 @@ files:
       length: 57
       offset: 275
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Solved
     encrypted_possible_answer: |-
       incorrect_capacity_volume_type = ...

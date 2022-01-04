@@ -18,7 +18,7 @@ files:
       offset: 315
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: return f"Glass({self.capacity_volume}, {self.occupied_volume})"
   text: |
     from typing import Union
@@ -42,5 +42,8 @@ files:
 - name: __init__.py
   visible: false
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sun, 26 Dec 2021 12:20:18 UTC
 record: -1

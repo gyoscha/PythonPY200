@@ -17,7 +17,7 @@ files:
       offset: 1025
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: left_node.set_next(right_node)
   - offset: 1142
     length: 71
@@ -28,7 +28,7 @@ files:
       offset: 1142
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: linked_nodes(first_node, second_node)
   text: |
     from typing import Any, Optional
@@ -82,5 +82,8 @@ files:
 - name: __init__.py
   visible: false
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sun, 26 Dec 2021 12:26:16 UTC
 record: -1

@@ -16,7 +16,10 @@ class Node:
         self.set_next(next_)
 
     def __repr__(self) -> str:
-        return f"Node({self.value}, {self.next})"
+        return f"Node({self.value}, {None})" if self.next is None else f"Node({self.value}, Node({self.next}))"
+
+    def __str__(self) -> str:
+        return str(self.value)
 
     def is_valid(self, node: Any) -> None:
         if not isinstance(node, (type(None), Node)):
@@ -25,13 +28,3 @@ class Node:
     def set_next(self, next_: Optional["Node"] = None) -> None:
         self.is_valid(next_)
         self.next = next_
-
-
-if __name__ == '__main__':
-    first_node = Node(1)
-    second_node = Node(2)
-
-    first_node.set_next(second_node)
-
-    print(first_node)
-    print(second_node)
