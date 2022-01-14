@@ -32,4 +32,39 @@ class Node:
         self.is_valid(next_)
         self._next = next_
 
-# TODO реализовать класс DoubleLinkedNode
+
+class DoubleLinkedNode(Node):
+
+    def __init__(self, value, next_=None, prev=None):
+        super().__init__(value, next_)
+        self.prev = prev
+
+    @property
+    def prev(self):
+        return self._prev
+
+    @prev.setter
+    def prev(self, prev: Optional["DoubleLinkedNode"]):
+        self.is_valid(prev)
+        self._prev = prev
+
+    def is_valid(self, node: Any) -> None:
+        if not isinstance(node, (type(None), DoubleLinkedNode)):
+            raise TypeError
+
+    def __repr__(self) -> str:
+        next_ = str(None) if self.next is None else f"{self.__class__.__name__}({self.next.value}, None, {self.__class__.__name__}{self.next.prev})"
+        prev = str(None) if self.prev is None else f"{self.__class__.__name__}({self.prev.value}, {self.prev.next}, None)"
+        return f"{self.__class__.__name__}({self.value}, {next_}, {prev})"
+        # ToDo repr сделан неправильно немного, посмотреть дома.
+
+
+if __name__ == '__main__':
+    dll = DoubleLinkedNode(10)
+    dll_1 = DoubleLinkedNode(35)
+
+    dll_1.prev = dll
+    dll.next = dll_1
+
+    print(repr(dll))
+    print(repr(dll_1))
