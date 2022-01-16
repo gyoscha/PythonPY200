@@ -27,7 +27,7 @@ class Node:
 
     def set_next(self, next_: Optional["Node"] = None) -> None:
         self.is_valid(next_)
-        self.__next = next_  # TODO заменить на private
+        self.__next = next_
 
 
 if __name__ == "__main__":

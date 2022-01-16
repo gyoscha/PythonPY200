@@ -80,7 +80,15 @@ class LinkedList:
         return self
 
     def __mul__(self, other: int) -> "LinkedList":
-        ... # TODO реализовать метод клонирования последовательности
+        if not isinstance(other, int):
+            raise TypeError
+
+        for values in repeat(self.to_list(), other - 1):
+            for value in values:
+                self.append(value)
+
+        return self
+
 
 
 if __name__ == "__main__":

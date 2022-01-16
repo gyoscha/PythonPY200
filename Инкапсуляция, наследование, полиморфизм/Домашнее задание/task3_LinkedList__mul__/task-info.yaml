@@ -10,14 +10,14 @@ files:
   visible: true
   placeholders:
   - offset: 2428
-    length: 60
+    length: 206
     placeholder_text: '... # TODO реализовать метод клонирования последовательности'
     initial_state:
       length: 60
       offset: 2428
     initialized_from_dependency: false
-    selected: false
-    status: Unchecked
+    selected: true
+    status: Solved
     encrypted_possible_answer: |-
       if not isinstance(other, int):
                   raise TypeError
@@ -161,5 +161,8 @@ files:
             self.is_valid(next_)
             self._next = next_
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sun, 16 Jan 2022 21:18:06 UTC
 record: -1

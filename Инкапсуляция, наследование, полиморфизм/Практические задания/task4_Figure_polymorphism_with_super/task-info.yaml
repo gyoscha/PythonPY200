@@ -10,13 +10,13 @@ files:
   visible: true
   placeholders:
   - offset: 388
-    length: 14
+    length: 47
     placeholder_text: '...  # TODO вызываем метод area базового класса'
     initial_state:
       length: 47
       offset: 388
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: super().area()
   text: |
@@ -54,5 +54,5 @@ files:
 status: Solved
 feedback:
   message: Congratulations!
-  time: Fri, 14 Jan 2022 15:58:38 UTC
+  time: Sun, 16 Jan 2022 19:29:33 UTC
 record: -1

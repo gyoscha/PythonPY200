@@ -11,8 +11,8 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 68
-    length: 2304
+  - offset: 67
+    length: 2057
     placeholder_text: |-
       # TODO защитить от модификации атрибуты head, tail, len
       class LinkedList:
@@ -283,5 +283,5 @@ files:
 status: Solved
 feedback:
   message: Congratulations!
-  time: Fri, 14 Jan 2022 17:18:21 UTC
+  time: Sun, 16 Jan 2022 19:31:39 UTC
 record: -1

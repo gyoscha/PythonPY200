@@ -53,10 +53,9 @@ class DoubleLinkedNode(Node):
             raise TypeError
 
     def __repr__(self) -> str:
-        next_ = str(None) if self.next is None else f"{self.__class__.__name__}({self.next.value}, None, {self.__class__.__name__}{self.next.prev})"
-        prev = str(None) if self.prev is None else f"{self.__class__.__name__}({self.prev.value}, {self.prev.next}, None)"
+        next_ = str(None) if self.next is None else f"{self.__class__.__name__}({self.next.value})"
+        prev = str(None) if self.prev is None else f"{self.__class__.__name__}({self.prev.value})"
         return f"{self.__class__.__name__}({self.value}, {next_}, {prev})"
-        # ToDo repr сделан неправильно немного, посмотреть дома.
 
 
 if __name__ == '__main__':
