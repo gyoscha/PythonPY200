@@ -1,6 +1,6 @@
 from typing import Any, Iterable, Optional
 
-from node import Node
+from node import Node, DoubleLinkedNode
 
 
 class LinkedList:
@@ -70,4 +70,37 @@ class LinkedList:
         return f"{self.to_list()}"
 
 
-# TODO Реализовать класс DoubleLinkedList
+class DoubleLinkedList(LinkedList):
+    def __init__(self, data: Iterable = None):
+        super(DoubleLinkedList, self).__init__()
+        self.head: Optional[DoubleLinkedNode] = None
+
+        if data is not None:
+            for value in data:
+                self.append(value)
+
+    def append(self, value: Any):
+        append_node = DoubleLinkedNode(value)
+
+        if self.head is None:
+            self.head = self.tail = append_node
+        else:
+            self.linked_nodes(self.tail, append_node)
+            self.tail = append_node
+
+        self.len += 1
+
+    @staticmethod
+    def linked_nodes(left_node: DoubleLinkedNode, right_node: Optional[DoubleLinkedNode] = None) -> None:
+        left_node.next = right_node
+        right_node.prev = left_node
+
+
+if __name__ == '__main__':
+    a = DoubleLinkedList([1, 2, 3])
+    print(repr(a))
+    a.append(4)
+    print(repr(a))
+    a.to_list()
+    print(a)
+    print(a.step_by_step_on_nodes(2))

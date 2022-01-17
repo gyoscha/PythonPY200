@@ -32,4 +32,27 @@ class Node:
         self.is_valid(next_)
         self._next = next_
 
-# TODO реализовать класс DoubleLinkedNode
+
+class DoubleLinkedNode(Node):
+
+    def __init__(self, value, next_=None, prev=None):
+        super().__init__(value, next_)
+        self.prev = prev
+
+    @property
+    def prev(self):
+        return self._prev
+
+    @prev.setter
+    def prev(self, prev: Optional["DoubleLinkedNode"]):
+        self.is_valid(prev)
+        self._prev = prev
+
+    def is_valid(self, node: Any) -> None:
+        if not isinstance(node, (type(None), DoubleLinkedNode)):
+            raise TypeError
+
+    def __repr__(self) -> str:
+        next_ = str(None) if self.next is None else f"{self.__class__.__name__}({self.next.value})"
+        prev = str(None) if self.prev is None else f"{self.__class__.__name__}({self.prev.value})"
+        return f"{self.__class__.__name__}({self.value}, {next_}, {prev})"
