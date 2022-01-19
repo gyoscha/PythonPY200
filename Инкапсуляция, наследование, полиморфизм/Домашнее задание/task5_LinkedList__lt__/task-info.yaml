@@ -4,17 +4,17 @@ files:
   visible: true
   placeholders:
   - offset: 105
-    length: 15
+    length: 27
     placeholder_text: '# TODO задекорировать класс'
     initial_state:
       length: 27
       offset: 105
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: '@total_ordering'
-  - offset: 2565
-    length: 413
+  - offset: 2577
+    length: 30
     placeholder_text: '# TODO определить метод __lt__'
     initial_state:
       length: 30
@@ -181,7 +181,5 @@ files:
             self._next = next_
   learner_created: false
 status: Solved
-feedback:
-  time: Sun, 16 Jan 2022 21:27:57 UTC
 record: -1
 post_submission_on_open: true
