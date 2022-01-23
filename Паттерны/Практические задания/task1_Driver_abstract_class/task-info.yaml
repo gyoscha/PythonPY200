@@ -8,39 +8,39 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 774
-    length: 284
+  - offset: 701
+    length: 57
     placeholder_text: '...  # TODO реализовать драйвер работы с текстовым файлом'
     initial_state:
       length: 57
       offset: 701
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       def __init__(self, filename):
               self.filename = filename
-  - offset: 1059
-    length: 0
+  - offset: 764
+    length: 47
     placeholder_text: '# TODO реализовать метод чтения данных из файла'
     initial_state:
       length: 47
       offset: 764
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       def read(self) -> Iterable:
               with open(self.filename) as f:
                   return [int(line) for line in f]
-  - offset: 1059
-    length: 0
+  - offset: 817
+    length: 48
     placeholder_text: '# TODO реализовать метод записи в файл построчно'
     initial_state:
       length: 48
       offset: 817
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       def write(self, data: Iterable) -> None:
@@ -101,5 +101,5 @@ files:
 status: Solved
 feedback:
   message: Congratulations!
-  time: Wed, 19 Jan 2022 15:54:08 UTC
+  time: Sun, 23 Jan 2022 09:56:59 UTC
 record: -1

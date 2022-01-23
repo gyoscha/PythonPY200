@@ -4,13 +4,13 @@ files:
   visible: true
   placeholders:
   - offset: 641
-    length: 93
+    length: 51
     placeholder_text: '# TODO реализовать класс JsonFileDriveFactoryMethod'
     initial_state:
       length: 51
       offset: 641
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       class JsonFileDriverFactoryMethod(DriverFactoryMethod):
@@ -63,8 +63,8 @@ files:
 - name: drivers.py
   visible: true
   placeholders:
-  - offset: 1182
-    length: 589
+  - offset: 1172
+    length: 6
     placeholder_text: '# TODO'
     dependency:
       section: Паттерны
@@ -76,8 +76,8 @@ files:
     initial_state:
       length: 6
       offset: 1172
-    initialized_from_dependency: true
-    selected: true
+    initialized_from_dependency: false
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       class JsonFileDriver(IStructureDriver):
@@ -156,6 +156,6 @@ files:
   learner_created: false
 status: Solved
 feedback:
-  time: Wed, 19 Jan 2022 17:28:28 UTC
+  time: Sun, 23 Jan 2022 09:59:18 UTC
 record: -1
 post_submission_on_open: true

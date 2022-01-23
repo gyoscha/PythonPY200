@@ -4,13 +4,13 @@ files:
   visible: true
   placeholders:
   - offset: 1172
-    length: 124
+    length: 39
     placeholder_text: '# TODO Реализовать класс JsonFileDriver'
     initial_state:
       length: 39
       offset: 1172
     initialized_from_dependency: false
-    selected: true
+    selected: false
     status: Solved
     encrypted_possible_answer: |-
       class JsonFileDriver(IStructureDriver):
@@ -88,6 +88,6 @@ files:
   learner_created: false
 status: Solved
 feedback:
-  time: Wed, 19 Jan 2022 17:20:47 UTC
+  time: Sun, 23 Jan 2022 09:58:48 UTC
 record: -1
 post_submission_on_open: true
