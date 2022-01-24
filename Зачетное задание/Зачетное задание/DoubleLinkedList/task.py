@@ -7,9 +7,9 @@ from node import Node, DoubleLinkedNode
 class LinkedList(MutableSequence):
     def __init__(self, data: Iterable = None):
         """Конструктор связного списка"""
-        self.len = 0
-        self.head: Optional[Node] = None
-        self.tail = self.head
+        self._len = 0
+        self._head: Optional[Node] = None
+        self._tail = self._head
 
         if data is not None:
             for value in data:
@@ -19,23 +19,23 @@ class LinkedList(MutableSequence):
         """ Добавление элемента в конец связного списка. """
         append_node = Node(value)
 
-        if self.head is None:
-            self.head = self.tail = append_node
+        if self._head is None:
+            self._head = self._tail = append_node
         else:
-            self.linked_nodes(self.tail, append_node)
-            self.tail = append_node
+            self.linked_nodes(self._tail, append_node)
+            self._tail = append_node
 
-        self.len += 1
+        self._len += 1
 
-    def step_by_step_on_nodes(self, index: int) -> Node:
+    def step_by_step_on_nodes(self, index: int):
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
         if not isinstance(index, int):
             raise TypeError('Индекс не соответствует типу int.')
 
-        if not 0 <= index < self.len:  # для for
+        if not 0 <= index < self._len:  # для for
             raise IndexError('Индекс выходит за рамки связного списка.')
 
-        current_node = self.head
+        current_node = self._head
         for _ in range(index):
             current_node = current_node.next
 
@@ -73,12 +73,12 @@ class LinkedList(MutableSequence):
         if not isinstance(index, int):
             raise TypeError('Индекс не соответствует типу int.')
 
-        if not 0 <= index < self.len:  # для for
+        if not 0 <= index < self._len:  # для for
             raise IndexError('Индекс выходит за рамки связного списка.')
 
         if index == 0:
-            self.head = self.head.next
-        elif index == self.len - 1:
+            self._head = self._head.next
+        elif index == self._len - 1:
             tail = self.step_by_step_on_nodes(index - 1)
             tail.next = None
         else:
@@ -88,14 +88,14 @@ class LinkedList(MutableSequence):
 
             self.linked_nodes(prev_node, next_node)
 
-        self.len -= 1
+        self._len -= 1
 
     def __len__(self) -> int:
         """
         Метод определения длины последовательности.
         :return: Значение длины
         """
-        return self.len
+        return self._len
 
     def insert(self, index: int, value: Any) -> None:
         """
@@ -109,19 +109,19 @@ class LinkedList(MutableSequence):
 
         insert_node = Node(value)
         if index == 0:
-            insert_node.next = self.head
-            self.head = insert_node
-            self.len += 1
-        elif index >= self.len - 1:
+            insert_node.next = self._head
+            self._head = insert_node
+            self._len += 1
+        elif index >= self._len - 1:
             self.append(value)
-            self.tail = insert_node
+            self._tail = insert_node
         else:
             prev_node = self.step_by_step_on_nodes(index - 1)
             next_node = prev_node.next
             self.linked_nodes(prev_node, insert_node)
             self.linked_nodes(insert_node, next_node)
 
-            self.len += 1
+            self._len += 1
 
     def __str__(self):
         return f"{self.to_list()}"
@@ -129,13 +129,13 @@ class LinkedList(MutableSequence):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.to_list()})"
 
-    def nodes_iterator(self) -> Iterator[Node]:
+    def nodes_iterator(self):
         """
         Итератор по узлам LinkedList.
         :return: Итератор.
         """
-        current_node = self.head
-        for _ in range(self.len):
+        current_node = self._head
+        for _ in range(self._len):
             yield current_node
             current_node = current_node.next
 
@@ -164,25 +164,53 @@ class LinkedList(MutableSequence):
         Метод для реализации обратного итерирования по объекту.
         """
         prev_node = None
-        current_node = self.head
+        current_node = self._head
         while current_node is not None:
             next_node = current_node.next
             current_node.next = prev_node
             prev_node = current_node
             current_node = next_node
-        self.head = self.tail
+        self._head = self._tail
 
     def count(self, value: Any) -> int:
-        pass
+        """ Метод подсчитывает количество экземпляров элемента в списке. """
+        count = 0
+        for val in self.to_list():
+            if val == value:
+                count += 1
 
-    # def pop(self, index: int = ...) -> :
-    #     pass
-    #
-    # def extend(self, values: Iterable[_T]) -> None:
-    #     pass
+        return count
+
+    def pop(self, index: Optional[int] = None) -> Any:
+        """ Метод удаляет элемент по указанному индексу и возвращает его.
+            Если индекс не указан, то удаляет и возвращает последний элемент. """
+
+        list_values = self.to_list()
+
+        if index is not None:
+            self.__delitem__(index)
+            return list_values[index]
+        else:
+            self.__delitem__(self._len - 1)
+            return list_values[len(list_values) - 1]
+
+    def extend(self, value: Any) -> None:
+        """ Этот метод обновляет список, добавляя элементы в конец. """
+        if isinstance(value, (int, float)):
+            self.append(value)
+        else:
+            for i in value:
+                self.append(i)
 
     def remove(self, value: Any) -> None:
-        pass
+        """
+        Метод удаляет элемент из LinkedList.
+        """
+        if value not in self.to_list():
+            raise ValueError('Введенное значение отсутсвтует')
+
+        index = self.index(value)
+        self.__delitem__(index)
 
     def index(self, value: Any, start: int = ..., stop: int = ...) -> int:
         """ Метод ищет элемент в списке и возвращает его индекс. """
@@ -195,11 +223,61 @@ class LinkedList(MutableSequence):
 
 
 class DoubleLinkedList(LinkedList):
-    ...
+    def __init__(self, data: Iterable = None):
+        super().__init__()
+        self._head: Optional[DoubleLinkedNode] = None
+
+        if data is not None:
+            for value in data:
+                self.append(value)
+
+    def append(self, value: Any):
+        append_node = DoubleLinkedNode(value)
+
+        if self._head is None:
+            self._head = self._tail = append_node
+        else:
+            self.linked_nodes(self._tail, append_node)
+            self._tail = append_node
+
+        self._len += 1
+
+    @staticmethod
+    def linked_nodes(left_node: DoubleLinkedNode, right_node: Optional[DoubleLinkedNode] = None) -> None:
+        left_node.next = right_node
+        right_node.prev = left_node
+
+    def insert(self, index: int, value: Any) -> None:
+        """
+        Добавление в LinkedList узла по опреденному идексу.
+        :param index: Индекс, по которому хотим вставить элемент.
+        :param value: Значение, которое хотим вставить.
+        :return: None
+        """
+        if not isinstance(index, int):
+            raise TypeError('Индекс не соответствует типу int.')
+
+        insert_node = DoubleLinkedNode(value)
+        if index == 0:
+            insert_node.next = self._head
+            self._head.prev = insert_node
+            self._head = insert_node
+            self._len += 1
+        elif index >= self._len - 1:
+            self.append(value)
+            self._tail = insert_node
+        else:
+            prev_node = self.step_by_step_on_nodes(index - 1)
+            next_node = prev_node.next
+            self.linked_nodes(prev_node, insert_node)
+            self.linked_nodes(insert_node, next_node)
+
+            self._len += 1
 
 
 if __name__ == "__main__":
-    a = LinkedList([1, 2, 3, 4, 5])
+    a = DoubleLinkedList([1, 2, 3, 4, 5])
     print(a)
-    print(a.index(5))
+    a.__reversed__()
+    print(a)
 
