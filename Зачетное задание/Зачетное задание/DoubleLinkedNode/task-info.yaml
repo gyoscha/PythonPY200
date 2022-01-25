@@ -48,8 +48,11 @@ files:
     if __name__ == "__main__":
         ...
   learner_created: false
+- name: test_task.py
+  visible: true
+  learner_created: true
 status: Solved
 feedback:
   message: Congratulations!
-  time: Tue, 25 Jan 2022 16:51:46 UTC
+  time: Tue, 25 Jan 2022 17:18:35 UTC
 record: -1

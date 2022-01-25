@@ -19,7 +19,8 @@ class Node:
     def __str__(self) -> str:
         return str(self.value)
 
-    def is_valid(self, node: Any) -> None:
+    @staticmethod
+    def is_valid(node: Any) -> None:
         if not isinstance(node, (type(None), Node)):
             raise TypeError
 
@@ -54,7 +55,8 @@ class DoubleLinkedNode(Node):
         self.is_valid(prev)
         self._prev = prev
 
-    def is_valid(self, node: Any) -> None:
+    @staticmethod
+    def is_valid(node: Any) -> None:
         """
         Проверка узла на приверженность типу None или DoubleLinkedNode
         """
