@@ -37,7 +37,7 @@ class DoubleLinkedNode(Node):
     """
     Класс, который описывает узел двусвязного списка
     """
-    def __init__(self, value, next_: Optional["Node"] = None,  prev: Optional["Node"] = None):
+    def __init__(self, value, next_: Optional["DoubleLinkedNode"] = None,  prev: Optional["DoubleLinkedNode"] = None):
         """
         Создаем новый узел для двусвязного списка
         :param prev: Прошлый узел, если он есть

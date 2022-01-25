@@ -3,7 +3,6 @@ import unittest
 from task import Node
 
 
-# todo: replace this with an actual test
 class TestCase(unittest.TestCase):
     def test_is_valid(self):
         ...

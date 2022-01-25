@@ -5,10 +5,12 @@ from node import Node, DoubleLinkedNode
 
 
 class LinkedList(MutableSequence):
+    CLASS_NODE = Node
+
     def __init__(self, data: Iterable = None):
         """Конструктор связного списка"""
         self._len = 0
-        self._head: Optional[Node] = None
+        self._head = None
         self._tail = self._head
 
         if data is not None:
@@ -17,7 +19,7 @@ class LinkedList(MutableSequence):
 
     def append(self, value: Any):
         """ Добавление элемента в конец связного списка. """
-        append_node = Node(value)
+        append_node = self.CLASS_NODE(value)
 
         if self._head is None:
             self._head = self._tail = append_node
@@ -107,9 +109,9 @@ class LinkedList(MutableSequence):
         if not isinstance(index, int):
             raise TypeError('Индекс не соответствует типу int.')
 
-        insert_node = Node(value)
+        insert_node = self.CLASS_NODE(value)
         if index == 0:
-            insert_node.next = self._head
+            self.linked_nodes(insert_node, self._head)
             self._head = insert_node
             self._len += 1
         elif index >= self._len - 1:
@@ -223,61 +225,14 @@ class LinkedList(MutableSequence):
 
 
 class DoubleLinkedList(LinkedList):
-    def __init__(self, data: Iterable = None):
-        super().__init__()
-        self._head: Optional[DoubleLinkedNode] = None
-
-        if data is not None:
-            for value in data:
-                self.append(value)
-
-    def append(self, value: Any):
-        append_node = DoubleLinkedNode(value)
-
-        if self._head is None:
-            self._head = self._tail = append_node
-        else:
-            self.linked_nodes(self._tail, append_node)
-            self._tail = append_node
-
-        self._len += 1
+    CLASS_NODE = DoubleLinkedNode
 
     @staticmethod
     def linked_nodes(left_node: DoubleLinkedNode, right_node: Optional[DoubleLinkedNode] = None) -> None:
         left_node.next = right_node
         right_node.prev = left_node
 
-    def insert(self, index: int, value: Any) -> None:
-        """
-        Добавление в LinkedList узла по опреденному идексу.
-        :param index: Индекс, по которому хотим вставить элемент.
-        :param value: Значение, которое хотим вставить.
-        :return: None
-        """
-        if not isinstance(index, int):
-            raise TypeError('Индекс не соответствует типу int.')
-
-        insert_node = DoubleLinkedNode(value)
-        if index == 0:
-            insert_node.next = self._head
-            self._head.prev = insert_node
-            self._head = insert_node
-            self._len += 1
-        elif index >= self._len - 1:
-            self.append(value)
-            self._tail = insert_node
-        else:
-            prev_node = self.step_by_step_on_nodes(index - 1)
-            next_node = prev_node.next
-            self.linked_nodes(prev_node, insert_node)
-            self.linked_nodes(insert_node, next_node)
-
-            self._len += 1
-
 
 if __name__ == "__main__":
-    a = DoubleLinkedList([1, 2, 3, 4, 5])
-    print(a)
-    a.__reversed__()
-    print(a)
+    pass
 
