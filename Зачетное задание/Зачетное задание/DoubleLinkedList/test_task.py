@@ -21,6 +21,15 @@ class TestLinkedList(unittest.TestCase):
 
         self.assertIs(linkedlist.__getitem__(1), node.value)
 
+    def test_linked_nodes(self):
+        linkedlist = LinkedList()
+        node_1 = Node(1)
+        node_2 = Node(2)
+
+        linkedlist.linked_nodes(node_1, node_2)
+
+        self.assertIs(node_1.next, node_2)
+
     def test_setitem(self):
         node = Node(5)
         linkedlist = LinkedList([1, 2, 3, 4, 9])
@@ -120,5 +129,11 @@ class TestLinkedList(unittest.TestCase):
 
 
 class TestDoubleLinkedList(unittest.TestCase):
-    pass
+    def test_linked_nodes(self):
+        linkedlist = DoubleLinkedList()
+        node_1 = DoubleLinkedNode(1)
+        node_2 = DoubleLinkedNode(2)
 
+        linkedlist.linked_nodes(node_1, node_2)
+
+        self.assertIs(node_2.prev, node_1)

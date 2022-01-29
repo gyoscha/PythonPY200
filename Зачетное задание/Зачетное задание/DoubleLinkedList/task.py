@@ -234,8 +234,4 @@ class DoubleLinkedList(LinkedList):
 
 
 if __name__ == "__main__":
-    linkedlist = LinkedList([1, 2, 3, 4])
-
-    print(linkedlist.index(4))
-
-
+    pass
