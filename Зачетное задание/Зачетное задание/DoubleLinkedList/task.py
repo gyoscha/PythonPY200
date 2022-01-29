@@ -114,7 +114,7 @@ class LinkedList(MutableSequence):
             self.linked_nodes(insert_node, self._head)
             self._head = insert_node
             self._len += 1
-        elif index >= self._len - 1:
+        elif index >= self._len:
             self.append(value)
             self._tail = insert_node
         else:
@@ -234,5 +234,8 @@ class DoubleLinkedList(LinkedList):
 
 
 if __name__ == "__main__":
-    pass
+    linkedlist = LinkedList([1, 2, 3, 4])
+
+    print(linkedlist.index(4))
+
 
