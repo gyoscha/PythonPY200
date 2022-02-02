@@ -19,9 +19,9 @@ class Node:
     def __str__(self) -> str:
         return str(self.value)
 
-    @staticmethod
-    def is_valid(node: Any) -> None:
-        if not isinstance(node, (type(None), Node)):
+    @classmethod
+    def is_valid(cls, node: Any) -> None:
+        if not isinstance(node, (type(None), cls)):
             raise TypeError
 
     @property
@@ -54,14 +54,6 @@ class DoubleLinkedNode(Node):
     def prev(self, prev: Optional["DoubleLinkedNode"]):
         self.is_valid(prev)
         self._prev = prev
-
-    @staticmethod
-    def is_valid(node: Any) -> None:
-        """
-        Проверка узла на приверженность типу None или DoubleLinkedNode
-        """
-        if not isinstance(node, (type(None), DoubleLinkedNode)):
-            raise TypeError('Дан узел неверного типа')
 
     def __repr__(self) -> str:
         next_ = str(None) if self.next is None else f"{self.__class__.__name__}({self.next.value})"

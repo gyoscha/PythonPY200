@@ -134,7 +134,7 @@ class LinkedList(MutableSequence):
     def __repr__(self):
         return f"{self.__class__.__name__}({self.to_list()})"
 
-    def nodes_iterator(self):
+    def nodes_iterator(self) -> Iterator[Node]:
         """
         Итератор по узлам LinkedList.
         :return: Итератор.
@@ -158,8 +158,8 @@ class LinkedList(MutableSequence):
         :param item: Значение, вхождение котрого хотим проверить.
         :return: True/False
         """
-        for node in self.nodes_iterator():
-            if node.value == item:
+        for node_value in self:
+            if node_value == item:
                 return True
 
         return False
@@ -180,7 +180,7 @@ class LinkedList(MutableSequence):
     def count(self, value: Any) -> int:
         """ Метод подсчитывает количество экземпляров элемента в списке. """
         count = 0
-        for val in self.to_list():
+        for val in self:
             if val == value:
                 count += 1
 
@@ -192,20 +192,18 @@ class LinkedList(MutableSequence):
 
         list_values = self.to_list()
 
-        if index is not None:
-            self.__delitem__(index)
-            return list_values[index]
-        else:
-            self.__delitem__(self._len - 1)
-            return list_values[len(list_values) - 1]
+        index = len(list_values) - 1 if index is None else index
+        self.__delitem__(index)
+        return list_values[index]
 
-    def extend(self, value: Any) -> None:
+    def extend(self, value: Iterable) -> None:
         """ Этот метод обновляет список, добавляя элементы в конец. """
-        if isinstance(value, (int, float)):
-            self.append(value)
-        else:
-            for i in value:
-                self.append(i)
+        try:
+            (_ for _ in value)
+        except TypeError:
+            raise TypeError
+        for i in value:
+            self.append(i)
 
     def remove(self, value: Any) -> None:
         """
@@ -217,7 +215,7 @@ class LinkedList(MutableSequence):
         index = self.index(value)
         self.__delitem__(index)
 
-    def index(self, value: Any, start: int = ..., stop: int = ...) -> int:
+    def index(self, value: Any, start: int = 0, stop: int = None) -> int:
         """ Метод ищет элемент в списке и возвращает его индекс. """
         if value not in self:
             raise ValueError('Введенное значение отсутсвтует')

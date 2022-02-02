@@ -133,6 +133,12 @@ class TestLinkedList(unittest.TestCase):
 
         self.assertIs(index_, 3)
 
+    def test__contains__(self):
+        ll = LinkedList([1, 2, 3])
+
+        self.assertTrue(1 in ll)
+        self.assertFalse(100 in ll)
+
 
 class TestDoubleLinkedList(unittest.TestCase):
     def test_linked_nodes(self):
