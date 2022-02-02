@@ -70,11 +70,4 @@ class DoubleLinkedNode(Node):
 
 
 if __name__ == "__main__":
-    dll = DoubleLinkedNode(10)
-    dll_1 = DoubleLinkedNode(35)
-
-    dll_1.prev = dll
-    dll.next = dll_1
-
-    print(repr(dll))
-    print(repr(dll_1))
+    pass

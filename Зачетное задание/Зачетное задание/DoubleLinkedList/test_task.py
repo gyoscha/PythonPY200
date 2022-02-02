@@ -113,10 +113,16 @@ class TestLinkedList(unittest.TestCase):
         self.assertIs(linkedlist.__getitem__(6), 11)
 
     def test_remove(self):
-        linkedlist = LinkedList([1, 2, 3, 4])
+        linkedlist = LinkedList([1, 2, 3, 4, 5, 6])
         linkedlist.remove(1)
 
         self.assertIs(linkedlist.__getitem__(0), 2)
+
+        linkedlist.remove(4)
+        self.assertIs(linkedlist.__getitem__(2), 5)
+
+        linkedlist.remove(6)
+        self.assertIs(linkedlist.__getitem__(2), 5)
 
         with self.assertRaises(ValueError):
             linkedlist.remove(10)

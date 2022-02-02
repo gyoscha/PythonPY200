@@ -17,7 +17,7 @@ class LinkedList(MutableSequence):
             for value in data:
                 self.append(value)
 
-    def append(self, value: Any):
+    def append(self, value: Any) -> None:
         """ Добавление элемента в конец связного списка. """
         append_node = self.CLASS_NODE(value)
 
@@ -29,7 +29,7 @@ class LinkedList(MutableSequence):
 
         self._len += 1
 
-    def step_by_step_on_nodes(self, index: int):
+    def step_by_step_on_nodes(self, index: int) -> CLASS_NODE:
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
         if not isinstance(index, int):
             raise TypeError('Индекс не соответствует типу int.')
@@ -44,7 +44,7 @@ class LinkedList(MutableSequence):
         return current_node
 
     @staticmethod
-    def linked_nodes(left_node: Node, right_node: Optional[Node] = None) -> None:
+    def linked_nodes(left_node: CLASS_NODE, right_node: Optional[CLASS_NODE] = None) -> None:
         """
         Функция, которая связывает между собой два узла.
 
@@ -54,6 +54,9 @@ class LinkedList(MutableSequence):
         left_node.next = right_node
 
     def to_list(self) -> list:
+        """
+        Приведение LinkedList к питоновскому списку.
+        """
         return [linked_list_value for linked_list_value in self]
 
     def __getitem__(self, index: int) -> Any:
@@ -208,7 +211,7 @@ class LinkedList(MutableSequence):
         """
         Метод удаляет элемент из LinkedList.
         """
-        if value not in self.to_list():
+        if value not in self:
             raise ValueError('Введенное значение отсутсвтует')
 
         index = self.index(value)
@@ -216,10 +219,10 @@ class LinkedList(MutableSequence):
 
     def index(self, value: Any, start: int = ..., stop: int = ...) -> int:
         """ Метод ищет элемент в списке и возвращает его индекс. """
-        if value not in self.to_list():
+        if value not in self:
             raise ValueError('Введенное значение отсутсвтует')
 
-        for index, val in enumerate(self.to_list()):
+        for index, val in enumerate(self):
             if val == value:
                 return index
 
@@ -228,7 +231,7 @@ class DoubleLinkedList(LinkedList):
     CLASS_NODE = DoubleLinkedNode
 
     @staticmethod
-    def linked_nodes(left_node: DoubleLinkedNode, right_node: Optional[DoubleLinkedNode] = None) -> None:
+    def linked_nodes(left_node: CLASS_NODE, right_node: Optional[CLASS_NODE] = None) -> None:
         left_node.next = right_node
         right_node.prev = left_node
 
